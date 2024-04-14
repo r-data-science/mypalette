@@ -17,6 +17,11 @@ NULL
 
 options(shiny.maxRequestSize=10000*1024^2)
 
+globalVariables(c("c.1", "c.2", "c.3", "hex",
+                  "hex_group", "hue",
+                  "n", "pos", "sat", "txt_color",
+                  "value"))
+
 #' @describeIn app-run returns app object for subsequent execution
 #' @export
 runPaletteApp <- function() {
@@ -76,7 +81,7 @@ app_server <- function() {
         xmax <- input$plot_brush$xmax
         ymin <- input$plot_brush$ymin
         ymax <- input$plot_brush$ymax
-        im <- magick::image_crop2(r_image(), xmin, xmax, ymin, ymax)
+        im <- image_crop2(r_image(), xmin, xmax, ymin, ymax)
       }
       genPalette(im)
     })

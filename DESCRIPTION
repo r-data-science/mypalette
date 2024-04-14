@@ -28,7 +28,6 @@ Imports:
     fs,
     stringr,
     data.table,
-    rmarkdown,
     magick,
     grDevices,
     imager,

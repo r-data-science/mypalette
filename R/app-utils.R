@@ -94,13 +94,13 @@ genPalette <- function(im) {
     im |>
       image_quantize(max=n, colorspace=cs) |> ## reducing colours! different colorspace gives you different result
       magick2cimg() |> ## I'm converting, becauase I want to use as.data.frame function in imager package.
-      RGBtoHSV() %>% ## i like sorting colour by hue rather than RGB (red green blue)
-      as.data.frame(wide="c") %>%  #3 making it wide makes it easier to output hex colour
+      RGBtoHSV() |>  ## i like sorting colour by hue rather than RGB (red green blue)
+      as.data.frame(wide="c") |>  #3 making it wide makes it easier to output hex colour
       mutate(hex=grDevices::hsv(rescale(c.1, from=c(0,360)),c.2,c.3),
              hue = c.1,
              sat = c.2,
-             value = c.3) %>%
-      count(hex, hue, sat,value, sort=T) %>%
+             value = c.3) |>
+      count(hex, hue, sat,value, sort=T) |>
       mutate(colorspace = cs) |>
       as.data.table()
   }
@@ -127,7 +127,7 @@ genPalette <- function(im) {
   colors[hex_group %in% LETTERS[2:6], txt_color := "black"]
   colors[is.na(txt_color), txt_color := "white"]
 
-  colors %>%
+  colors |>
     ggplot(aes(x=hex_group, fill=hex)) +
     geom_bar() +
     theme(plot.background = element_rect(fill = "black")) +
