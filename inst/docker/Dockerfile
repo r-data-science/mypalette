@@ -21,6 +21,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libxml2-dev \
     libssh2-1-dev \
     libpq-dev \
+    libfftw3-dev \
+    libtiff-dev \
+    libglpk40 \
     && rm -rf /var/lib/apt/lists/*
 
 #------------------------------------------------------------

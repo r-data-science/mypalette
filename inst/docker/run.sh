@@ -1,14 +1,14 @@
 sudo docker build \
-  -t apptemplate1:latest \
+  -t paletteapp:latest \
   -f inst/docker/Dockerfile \
   .
 
 docker tag \
-  apptemplate1:latest \
-  bfatemi/apptemplate1:latest
+  paletteapp:latest \
+  bfatemi/paletteapp:latest
 
 docker push \
-  bfatemi/apptemplate1:latest
+  bfatemi/paletteapp:latest
 
 # sudo docker pull \
 #   bfatemi/apptemplate1:latest
